@@ -20,8 +20,8 @@
         <h5> Products that are Low on Stocks: </h5>
         <ul>
             <?php
-              foreach ($notif as $list){
-                echo "<li> Product Name: $list->productName | Product ID: $list->productId | Product Condition: $list->productCondition </li>";
+              foreach ($notif as $list){ 
+                echo "<li> Product Name: $list->productName | Product ID: $list->productId | Product Condition: $list->productCondition | $list->productLocation </li>";
               }
             ?>
         </ul>

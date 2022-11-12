@@ -216,7 +216,7 @@ iframe {
 	top: 0;
 	height: 100%;
 	width: 70px;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid rgba(221, 221, 221, 0);
 	transition: all .2s ease-in-out;
 	transition: 0.5s;
 	overflow: hidden;

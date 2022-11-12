@@ -37,9 +37,6 @@ class Main extends CI_Controller
 
 	}
     
-    //sample
-
-
     function fetch_subcategory()
     {
             if($this->input->post('categoryId'))
@@ -55,10 +52,6 @@ class Main extends CI_Controller
             echo $this->dynamic_dependent_models->fetch_subcategoryedit($this->input->post('categoryId'),($this->input->post('subcategoryId')));
         }
     }
-
-
-    //end
-
 
 	public function index()
 	{
@@ -106,7 +99,7 @@ class Main extends CI_Controller
 
         
         //form validations
-        $this->form_validation->set_rules('reqproductQuantityForm', 'Product Quantity' ,'required|max_length[30]');
+        $this->form_validation->set_rules('reqproductQuantityForm', 'Product Quantity' ,'required|max_length[30]|integer');
         $this->form_validation->set_rules('reqDateTimeForm', 'Date' ,'required|max_length[30]');
         
         $reqId = "REQPRD-".$this->randStrGen(2,7);
@@ -301,7 +294,7 @@ class Main extends CI_Controller
          $this->form_validation->set_rules('productBrandForm', 'Product Brand' ,'required');
          $this->form_validation->set_rules('productColorForm', 'Product Color' ,'required');
          $this->form_validation->set_rules('productLocationForm', 'Product Location' ,'required');
-         $this->form_validation->set_rules('productQuantityForm', 'Product Quantity' ,'required|max_length[30]');
+         $this->form_validation->set_rules('productQuantityForm', 'Product Quantity' ,'required|max_length[30]|integer');
          $this->form_validation->set_rules('productConditionForm', 'Product Condition' ,'required');
          //$this->form_validation->set_rules('productImageForm', 'Product Image' ,'required|max_length[30]'); need to update
          $this->form_validation->set_rules('DateTimeForm', 'Date' ,'required|max_length[30]');
@@ -568,6 +561,7 @@ class Main extends CI_Controller
     {
         //load data
         $data['products'] = $this->inventory_model->getProductDataById($this->uri->segment(3));
+        
         $data['category'] = $this->dynamic_dependent_model->getCategoryName();
         $data['subcategory'] = $this->dynamic_dependent_models->getSubCategoryName();
         $data['size'] = $this->size_model->getSizeName();
@@ -586,7 +580,7 @@ class Main extends CI_Controller
          $this->form_validation->set_rules('productBrandForm', 'Product Brand' ,'required');
          $this->form_validation->set_rules('productColorForm', 'Product Color' ,'required');
          $this->form_validation->set_rules('productLocationForm', 'Product Location' ,'required');
-         $this->form_validation->set_rules('productQuantityForm', 'Product Quantity' ,'required|max_length[30]');
+         $this->form_validation->set_rules('productQuantityForm', 'Product Quantity' ,'required|max_length[30]|integer');
          $this->form_validation->set_rules('productConditionForm', 'Product Condition' ,'required|max_length[30]');
          $this->form_validation->set_rules('DateTimeForm', 'Date' ,'required|max_length[30]');
          $this->form_validation->set_rules('modalInputEditPassword', 'Password' ,'required');
@@ -1055,11 +1049,11 @@ class Main extends CI_Controller
         $data['released'] = $this->dashboard_model->totalProductsReleased();
         $data['totNum'] = $this->dashboard_model->totalNumberOfProducts();
         
-        $data['dataYear'] = $this->charts_model->yearlyTotalQuantity();
-        $data['year'] = $this->charts_model->getYear();
+        // $data['dataYear'] = $this->charts_model->yearlyTotalQuantity();
+        // $data['year'] = $this->charts_model->getYear();
 
-        $data['dataMonth'] = $this->charts_model->monthTotalQuantity();
-        $data['month'] = $this->charts_model->getMonth();
+        // $data['dataMonth'] = $this->charts_model->monthTotalQuantity();
+        // $data['month'] = $this->charts_model->getMonth();
         
         $this->load->view('HeaderNFooter/Header');
 		$this->load->view('Pages/report', $data);
@@ -1127,8 +1121,8 @@ class Main extends CI_Controller
         $this->form_validation->set_rules('emailForm', 'Email' ,'required|valid_email');
         $this->form_validation->set_rules('userpasswordForm', 'Password', 'required|callback_checkpassword');
         $this->form_validation->set_rules('userpasswordconfirmForm', 'Password Confirmation', 'required|matches[userpasswordForm]');
-        $this->form_validation->set_rules('userpinForm', 'User Pin', 'required|callback_checkpin');
-        $this->form_validation->set_rules('userpinconfirmForm', 'Pin Confirmation', 'required|matches[userpinForm]');
+        $this->form_validation->set_rules('userpinForm', 'User Pin', 'required|callback_checkpin|integer');
+        $this->form_validation->set_rules('userpinconfirmForm', 'Pin Confirmation', 'required|matches[userpinForm]|integer');
         //$this->form_validation->set_rules('userRoleForm', 'User Role' ,'required|max_length[30]');
 
         $data['array'] = $this->role_model->getRoleName();
@@ -1176,12 +1170,12 @@ class Main extends CI_Controller
 
         if($this->input->post('userpasswordForm') != ''){ 
             $this->form_validation->set_rules('userpasswordForm', 'Password', 'required');
-            $this->form_validation->set_rules('userpasswordconfirmForm', 'Password Confirmation', 'required|matches[userpasswordForm]');
+            $this->form_validation->set_rules('userpasswordconfirmForm', 'Password Confirmation', 'required|callback_checkpassword|matches[userpasswordForm]');
         }
 
         if($this->input->post('userpinForm') != ''){ 
-            $this->form_validation->set_rules('userpinForm', 'Pin', 'required');
-            $this->form_validation->set_rules('userpinconfirmForm', 'Pin Confirmation', 'required|matches[userpasswordForm]');
+            $this->form_validation->set_rules('userpinForm', 'Pin', 'required|integer');
+            $this->form_validation->set_rules('userpinconfirmForm', 'Pin Confirmation', 'required|callback_checkpin|matches[userpinForm]|integer');
         }
 
         //$data['array'] = $this->user_model->getCategoryName();
@@ -1200,27 +1194,34 @@ class Main extends CI_Controller
         }
 
         if($this->input->post('userpinForm') != ''){ 
-            $postData ['password'] = md5($this->input->post('userpinForm'));
+            $postData ['pin'] = md5($this->input->post('userpinForm'));
         }
          
-
-        $data['array'] = $this->role_model->getRoleName();
+        //$data['array'] = $this->role_model->getRoleName();
         
         //add users
         if($this->form_validation->run() === true){ 
             if($this->Login_model->updateUserRecord($postData)){
-                $this->session->set_flashdata('success','User Added');
+                $this->session->set_flashdata('success','Saved');
             }
             else{
                 $this->session->set_flashdata('error','Failed');
             }
-            redirect('main/edituser/'.$postData['userId']);
+            redirect(['main/edituser/'.$postData['userId']]);
         }          
         else{
-            $this->load->helper('form');
-            $this->load->view('HeaderNFooter/Header');
-            $this->load->view('Pages/usereditpage', $data);
-            $this->load->view('HeaderNFooter/Footer');
+            if (validation_errors()) {
+                $this->session->set_flashdata('error',validation_errors());
+                redirect('main/edituser/'.$postData['userId']);
+            } 
+            else {
+                $this->load->helper('form');
+                $this->load->view('HeaderNFooter/Header');
+                $this->load->view('Pages/usereditpage', $data);
+                $this->load->view('HeaderNFooter/Footer');# code...
+            }
+            
+            
         }
     }
     

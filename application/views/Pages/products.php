@@ -327,7 +327,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th>Location</th>
                                 <th>Condition</th>
                                 <th>Quantity</th>
-                                <th>Product Picture</th>
+                                <th>Image</th>
                                 <th>Date</th>
                                 <th>Modify</th>       
                             </tr>
@@ -343,7 +343,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th>Location</th>
                                 <th>Condition</th>
                                 <th>Quantity</th>
-                                <th>Product Picture</th>
+                                <th>Image</th>
                                 <th>Date</th>
                                 <th>Modify</th>      
                             </tr>

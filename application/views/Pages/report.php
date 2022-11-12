@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="">
   <!-- Top Report Table Container -->
-  <div class = "center" align="center">
+  <!-- <div class = "center" align="center">
   <div class="col-md-10" style="margin-top: 30px">
     <div class="card" >
       <div class="card-header"  style="margin-bottom: 10px; background-color:#A71C49;" >
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>    
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -171,17 +171,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-    <div class="Analytical-graph container col-md-10" style="margin-top: 30px;">
+    <div class="Analytical-graph container-fluid" style="margin-top: 30px;">
         <div class="card">
             <div class="card-header" style="background-color:#A71C49;">
                 <h2 style="color: white">Reports</h2>
             </div>
-            <center>
-            <iframe title="finalsdmisreports - Report 3" width="1024" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiOTJiMmIwZmUtNzE2NC00MmVlLTkwNTgtODQ1ZjRjODRmOTMxIiwidCI6ImFlYjc0NWU2LTgxNjYtNGY4Zi05MjMzLTE3OWU4MTA5YzQ5ZSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
-            </center>
-
-
-             
+            <!-- <div class="card-body"> -->
+              <iframe id="graphsAnalytical" title="finalsdmisreports - Report 3" class="container-fluid" height="720px" src="https://app.powerbi.com/view?r=eyJrIjoiOTJiMmIwZmUtNzE2NC00MmVlLTkwNTgtODQ1ZjRjODRmOTMxIiwidCI6ImFlYjc0NWU2LTgxNjYtNGY4Zi05MjMzLTE3OWU4MTA5YzQ5ZSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+            <!-- </div> -->
                 <!-- </div>
                 <div class="panel-body">
                     <div id="container"></div> 
@@ -199,9 +196,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
                     <div id="yearlyTotalQuantity"></div>
                 </div> -->
-
-
-
-
-
-</div>
+        </div>

@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label for="userRoleForm">Role</label>
                     <select class="form-control" id="userRoleForm" name="userRoleForm">
                         <option value="1">Admin</option>
-                        <option value="2">Warehouse</option>
+                        <option value="2">Warehouse Personnel</option>
                     </select>
             </div>
         <!-- Create Button  -->

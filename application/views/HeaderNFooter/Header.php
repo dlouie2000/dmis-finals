@@ -46,7 +46,8 @@ $(document).ready(function () {
 
 </script>
 
-<div class="wrapper" style="background-color: #A71C49">
+<!-- NOTIFICATION BAR-->
+<div class="wrapper" style="background-color: #132947">
 
 <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0 ml-0">
 	<?php

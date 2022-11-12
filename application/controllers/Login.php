@@ -27,12 +27,12 @@ class Login extends CI_Controller {
 			if($result->num_rows() > 0) {
 				$data  = $result->row_array();
 				$name  = $data['username'];
-				$email = $data['email'];
+				// $email = $data['email'];
 				$level = $data['level'];
 				$sesdata = array(
 					'userid'  => $data['userId'],
 					'username'  => $username,
-					'email'		=> $email,
+					// 'email'		=> $email,
 					'level'     => $level,
 					'logged_in' => TRUE
 				);

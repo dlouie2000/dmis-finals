@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 text: "Export Excel",
 								title: "DoodlesManila-InboundProducts",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5,6,7,8,9,11],
 								}
                             },
                             {
@@ -89,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 text: "Export PDF",
 								title: "DoodlesManila-InboundProducts",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5,6,7,8,9,11],
 								}
                             },
 							{
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 className: "btn btn-info",
                                 text: "Copy",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5,6,7,8,9,11],
 								}
                             },
 							{
@@ -105,13 +105,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 className: "btn btn-info",
                                 text: "Print",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5,6,7,8,9,11],
 								}
                             },
 							
                         ],
 						<?php endif;?>
 					 	columns : [
+							
 						{ "data" : 'productId'},
 						{ "data" : 'productName' },
 						{ "data" : 'categoryNamee' },
@@ -124,6 +125,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						{ "data" : 'productQuantity' },
 						{
                         "data": 'productImage',
+						"targets"  : 'no-sort',
+      					"orderable": false,
                         render: function(data, type, row, meta) {
 							var baseurl = '<?php echo base_url('') ?>';
                             var a = '<img src="'+baseurl+'application/assets/attachments/'+data+'" style="border-radius: 10px;" width="100" height="100">';
@@ -242,6 +245,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						{ "data" : 'productQuantity' },
 						{
                         "data": 'productImage',
+						"targets"  : 'no-sort',
+      					"orderable": false,
                         render: function(data, type, row, meta) {
 							var baseurl = '<?php echo base_url('') ?>';
                             var a = '<img src="'+baseurl+'application/assets/attachments/'+data+'" style="border-radius: 10px;" width="100" height="100">';
@@ -455,6 +460,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						{ "data" : 'reqproductQuantity' },
 						{
                         "data": 'productImage',
+						"targets"  : 'no-sort',
+      					"orderable": false,
                         render: function(data, type, row, meta) {
 							var baseurl = '<?php echo base_url('') ?>';
                             var a = '<img src="'+baseurl+'application/assets/attachments/'+data+'" style="border-radius: 10px;" width="100" height="100">';
@@ -469,6 +476,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				} );
 			} );
 		</script>
+
+	<!-- <script>
+		// Selecting the iframe element
+		var iframe = document.getElementById("graphsAnalytical");
+		
+		// Adjusting the iframe height onload event
+		iframe.onload = function(){
+			iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+		}
+    </script> -->
 
 
 		<!-- Notification -->
@@ -500,7 +517,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 text: "Export Excel",
 								title: "DoodlesManila-StatusProducts",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5],
 								}
                             },
                             {
@@ -509,7 +526,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 text: "Export PDF",
 								title: "DoodlesManila-StatusProducts",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5],
 								}
                             },
 							{
@@ -517,7 +534,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 className: "btn btn-info",
                                 text: "Copy",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5],
 								}
                             },
 							{
@@ -525,7 +542,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 className: "btn btn-info",
                                 text: "Print",
 								exportOptions: {
-									columns: [0, 1, 2, 3, 4, 6,7,8,9,10,11,12],
+									columns: [0,1,2,3,4,5],
 								}
                             },
 							
@@ -544,7 +561,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						//approve and reject confirmation message password
 						// return '<a href="'+baseurl+'main/approve/'+data+'" class="btn btn-primary onclick="return ConfirmApprove()"">Approve</a> <a href="'+baseurl+'main/reject/'+data+'" class="btn btn-danger onclick="return ConfirmReject()"">Reject</a>';
 						//approve
-						return '<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-id="'+data.productId+'" data-reqid="'+data.reqproductId+'" data-qty="'+data.productQuantity+'" data-reqqty="'+data.reqproductQuantity+'" data-target="#approveconfirmationModal"><i class="bi bi-check" aria-hidden="true"></i> Approve Product</button> <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-id="'+data.productId+'" data-reqid="'+data.reqproductId+'" data-reqqty="'+data.reqproductQuantity+'" data-target="#rejectconfirmationModal"><i class="bi bi-check" aria-hidden="true"></i> Reject Product</button>'
+						return '<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-id="'+data.productId+'" data-reqid="'+data.reqproductId+'" data-qty="'+data.productQuantity+'" data-reqqty="'+data.reqproductQuantity+'" data-target="#approveconfirmationModal"><i class="fa-solid fa-check"></i> Approve</button> <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-id="'+data.productId+'" data-reqid="'+data.reqproductId+'" data-reqqty="'+data.reqproductQuantity+'" data-target="#rejectconfirmationModal"><i class="fa-solid fa-x"></i> Reject</button>'
 						; 
 						}
 						}

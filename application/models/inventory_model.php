@@ -97,7 +97,7 @@ class Inventory_model extends CI_Model {
 
     public function notification()
     {
-        return $this->db->select('*')->from($this->table)->where('productQuantity <', '50' )->get()->result();
+        return $this->db->select('*')->from($this->table)->where('productQuantity <', '20' )->get()->result();
 	}
 
     //edit and update product record

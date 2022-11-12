@@ -66,12 +66,12 @@ class Login_model extends CI_Model {
 		return $this->db->insert($this->table, $data);
 	}   
 	
-	function check_user($username, $password, $pin) {
+	function check_user($username, $password) {
 		$this->db->select('*'); //select all
 		$this->db->from('users_tbl'); // table name
 		$this->db->where('username', $username); // where username is equal to $username
 		$this->db->where('password', md5($password)); // and password is equal to  $password (md5 format)
-		$this->db->where('pin', md5($pin)); // and password is equal to  $password (md5 format)
+		// $this->db->where('pin', md5($pin)); // and password is equal to  $password (md5 format)
 		$query = $this->db->get(); //get data from DB
 		return $query;
 	}

@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php } ?>       
     <div class="card mx-auto">
         <div class="card-header" style="background-color:#A71C49;">
-            <h3 style="color: white;">Edit User </h3>
+            <h3 style="color: white;">Edit User</h3>
         </div>
         <div class="card-body">
         <?php echo form_open_multipart('main/edituser') ?>
@@ -51,11 +51,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label for="userpasswordconfirmForm">Confirm Password</label>
                 <input name="userpasswordconfirmForm" type="password" class="form-control" id="userpasswordconfirmForm" placeholder="">
             </div>
+            <!-- Pin -->
+            <div class="userpinForm col-md-6" style="padding:10px;">
+                <label for="userpinForm">User Pin (for deleting, editing, requesting and approving products)</label>
+                <input name="userpinForm" type="password" class="form-control" id="userpinForm" placeholder="">
+            </div>
+            <div class="userpinconfirmForm col-md-6" style="padding:10px;">
+                <label for="userpinconfirmForm">Confirm User Pin</label>
+                <input name="userpinconfirmForm" type="password" class="form-control" id="userpinconfirmForm" placeholder="">
+            </div> 
             <div class="userRoleForm col-md-12" style="padding:10px;">
                 <label for="userRoleForm">Role</label>
                 <select class="form-control" id="userRoleForm" name="userRoleForm" value="">
                     <option value="1" <?php echo ($users->level == '1')? 'selected' : null ?>>Admin</option>
-                    <option value="2" <?php echo ($users->level == '2')? 'selected' : null ?>>Warehouse</option>
+                    <option value="2" <?php echo ($users->level == '2')? 'selected' : null ?>>Warehouse Personnel</option>
                 </select>
             </div>
         <!-- Create Button  -->
